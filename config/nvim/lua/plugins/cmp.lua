@@ -48,13 +48,30 @@ return {
 					['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 				}),
 				sources = cmp.config.sources({
-						{ name = 'nvim_lsp' },
-						{ name = 'luasnip' }, -- For luasnip users.
-						{ name = 'nvim_lsp_signature_help' }
-					},
-					{
-						{ name = 'buffer' },
-					})
+					-- Copilot
+					{ name = "copilot" },
+					{ name = "codeium" },
+					-- Snippets
+					{ name = "luasnip" },
+					{ name = "neosnippet" },
+					{ name = "snippy" },
+					{ name = "ultisnips" },
+					{ name = "vsnip" },
+					{ name = "tsnip" },
+
+					-- LSP
+					{ name = "nvim_lsp" },
+					{ name = "nvim_lsp_signature_help" },
+					{ name = "nvim_lsp_document_symbol" },
+					{ name = "nvim_lsp_signature_help" },
+					{ name = "vim_lsp" },
+					{ name = "diag-codes" },
+
+					-- Generic
+					{ name = "path" },
+					{ name = "buffer" },
+					{ name = "emoji" }
+				})
 			})
 
 			-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
