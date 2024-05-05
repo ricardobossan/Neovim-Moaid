@@ -1,3 +1,26 @@
+---[[ Global Variables
+function Is_windows()
+	return package.config:sub(1, 1) == "\\"
+end -- Function to adjust paths and commands based on the operating system
+
+local function getHome_OSAgnostic()
+	if os.getenv("HOME") then
+		return os.getenv("HOME")
+	elseif os.getenv("USERPROFILE") then
+		return os.getenv("USERPROFILE")
+	else
+		error("Unable to determine the home directory.")
+	end
+end
+
+HOME = getHome_OSAgnostic()
+
+-- @brief Path separator based on the operating system
+PS = package.config:sub(1, 1)
+--]]
+
+
+
 vim.loader.enable()
 
 -- vim.g.loaded_netrw = 1
@@ -56,3 +79,4 @@ require("lazy").setup({
 
 require("config.autocmds")
 require("config.keymap")
+require('config.dap.init')
