@@ -29,7 +29,6 @@ return {
 				end
 
 				local whichkey = require("which-key")
-				local legendary = require("legendary")
 				local legendary_whichkey = require("legendary.integrations.which-key")
 
 				local opts = {
