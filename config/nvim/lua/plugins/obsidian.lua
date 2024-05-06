@@ -1,10 +1,15 @@
 local function load_workspace_configurations()
-	local home_directory = os.getenv("USERPROFILE")
-	if not home_directory then
-		error("Failed to retrieve home directory")
+	local home_directory, file_path
+
+	if (Is_windows()) then
+		home_directory = os.getenv("USERPROFILE")
+	else
+		home_directory = os.getenv("HOME")
 	end
 
-	local file_path = home_directory .. "/workspaces_config.json"
+	-- NOTE: **Workaround**: save a "workspaces_config.json" file in your home directory with the structure
+	-- provided in https://github.com/epwalsh/obsidian.nvim?tab=readme-ov-file#using-lazynvim  below:
+	file_path = home_directory .. "/workspaces_config.json"
 	local file = io.open(file_path, "r")
 	if not file then
 		error("Failed to open workspace configuration file")
@@ -15,7 +20,7 @@ local function load_workspace_configurations()
 	local workspace_config
 
 	local _, _ = pcall(function()
-		workspace_config= vim.fn.json_decode(content)
+		workspace_config = vim.fn.json_decode(content)
 	end)
 
 	return workspace_config
@@ -39,4 +44,3 @@ return {
 	commit = "0458e675d5ea59ba8df5375bf04f2a5a57720af8",
 	config = setup_obsidian
 }
-
