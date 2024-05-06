@@ -100,6 +100,9 @@ vim.keymap.set('n', '<leader>mc', "<cmd>:messages clear<CR>", { desc = "Show mes
 vim.keymap.set('n', '<leader>o', "o<Esc>^Da<Esc>k", { desc = 'Newline Below', silent = true })
 vim.keymap.set('n', '<leader>O', "O<Esc>^Da<Esc>j", { desc = 'Newline Above', silent = true })
 
+vim.keymap.set("i", 'jk', '<Esc>')
+vim.keymap.set("v", 'jk', '<Esc>')
+
 vim.keymap.set('i', '<S-tab>', '<esc><<i')
 
 vim.keymap.set('n', '<S-Home>', 'gg')
